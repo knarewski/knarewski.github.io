@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Making the change - Contribution guide</title>
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Making the change</h2>
+    <p>It’s time to add the change</p>
+
+<p>Diff:</p>
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/greeting.rb b/greeting.rb
+index f89f50c..a6d74c8 100644
+</span><span class="gd">--- a/greeting.rb
+</span><span class="gi">+++ b/greeting.rb
+</span><span class="p">@@ -1,5 +1,9 @@</span>
+ class Greeting
+<span class="gi">+  def initialize(custom_greeting)
++    @greeting = custom_greeting || 'Hello!'
++  end
++
+</span>   def print
+<span class="gd">-    puts 'Hello!'
+</span><span class="gi">+    puts @greeting
+</span>   end
+ end
+</code></pre></div></div>
+
+<p>New code:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Greeting</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">custom_greeting</span><span class="p">)</span>
+    <span class="vi">@greeting</span> <span class="o">=</span> <span class="n">custom_greeting</span> <span class="o">||</span> <span class="s1">'Hello!'</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">print</span>
+    <span class="nb">puts</span> <span class="vi">@greeting</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Commited under <code class="highlighter-rouge">"Add support for custom greeting; ref GRTR-5224"</code>. No surprises here.</p>
+
+
+    <a href="/preparing-code.html" class="prev">Back</a>
+        <a href="/adjusting-history.html" class="next">Next</a>
+        </body>
+</html>

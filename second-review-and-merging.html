@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Second review and merging - Contribution guide</title>
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Second review and merging</h2>
+    <p>The reviewer cross-checks new code against his comments, marking the addressed ones as “resolved”, and optionally skims the entire code again. If everything is in order, the Pull Request can be approved.</p>
+
+<p>The developer uses <code class="highlighter-rouge">git rebase -i --autosquash master</code>, to merge fixups into their corresponding commits, then pushes the changes. If there were any difficult conflicts, it’s sometimes worth asking for another quick review to make sure nothing got accidentally broken in the meantime. After that’s completed, the code should be merged using <code class="highlighter-rouge">rebase</code> strategy.</p>
+
+<h3 id="rules">Rules</h3>
+<ul>
+  <li>After getting approval autosquash the fixups which address the suggestions.</li>
+  <li>Don’t hesitate to dismiss review and ask for one last look if there were some significant conflicts when squashing.</li>
+  <li>(😺) When everything is good to go, merge using <code class="highlighter-rouge">Rebase and merge</code> button</li>
+</ul>
+
+<h3 id="caveats">Caveats</h3>
+<ul>
+  <li>This approach assumes certain degree of trust and competence. It would be possible for a developer to smuggle some undesired code on that stage. If that’s a problem, a review after squashing can be enforced.</li>
+</ul>
+
+
+    <a href="/code-review-and-addressing-comments.html" class="prev">Back</a>
+        <a href="/summary-and-faq.html" class="next">Next</a>
+        </body>
+</html>

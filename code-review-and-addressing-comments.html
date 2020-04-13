@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Code review and addressing comments - Contribution guide</title>
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Code review and addressing comments</h2>
+    <p>It’s time to create a Pull Request, for example <code class="highlighter-rouge">"GRTR-5224 Add support for custom greeting string"</code></p>
+
+<p>Your colleague quickly submits code review, politely pointing out that you accidentally broke the backward compatibility for your library: the constructor will crash if called without arguments. The simplest solution is to add a default value to the attribute.</p>
+
+<p>Diff:</p>
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/greeting.rb b/greeting.rb
+index f22e9c1..6eef322 100644
+</span><span class="gd">--- a/greeting.rb
+</span><span class="gi">+++ b/greeting.rb
+</span><span class="p">@@ -1,7 +1,7 @@</span>
+ # frozen_string_literal: true
+
+ class Greeting
+<span class="gd">-  def initialize(custom_greeting)
+</span><span class="gi">+  def initialize(custom_greeting = nil)
+</span>     @greeting = custom_greeting || 'Hello!'
+   end
+</code></pre></div></div>
+
+<p>Now, there is no value in storing this change in history, because if we thought about that beforehand we would have implemented it correctly when adding support for custom greeting. On the other hand squashing the new change would make the adjustments unclear to reviewer. The solution is to commit a fixup, but delay squashing it until the Pull Request is approved. So the steps are:</p>
+<ol>
+  <li><code class="highlighter-rouge">git commit --fixup 9bfd508</code>.</li>
+  <li>(😺) Add 👍 reaction on a comment you addressed (if you like to mark for yourself as done).</li>
+  <li>(😺) Re-request review (if you like the reviewer to be notified).</li>
+  <li>(😺) Dismiss the previous code review (so on the list of PRs it appears as “Requires review”).</li>
+</ol>
+
+<h3 id="rules">Rules</h3>
+<ul>
+  <li>Use fixups to modify commits which have already been reviewed.</li>
+  <li>Use 👍 reaction for marking suggestions as done, it’s up to reviewer to decide if the comment is correctly resolved.</li>
+</ul>
+
+
+    <a href="/adjusting-history.html" class="prev">Back</a>
+        <a href="/second-review-and-merging.html" class="next">Next</a>
+        </body>
+</html>

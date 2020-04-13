@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Adjusting history - Contribution guide</title>
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Adjusting history</h2>
+    <p>Just before creating a Pull Request, you realise that you forgot to add the magic comment required by your style guide, that’s easy enough to fix though:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/greeting.rb b/greeting.rb
+index a6d74c8..f22e9c1 100644
+</span><span class="gd">--- a/greeting.rb
+</span><span class="gi">+++ b/greeting.rb
+</span><span class="p">@@ -1,3 +1,5 @@</span>
+<span class="gi">+# frozen_string_literal: true
++
+</span> class Greeting
+   def initialize(custom_greeting)
+     @greeting = custom_greeting || 'Hello!'
+</code></pre></div></div>
+
+<p>Now, one option would be to create a new commit like <code class="highlighter-rouge">"Freeze string literals; ref GRTR-5224"</code>, but what value would it add to the history? It is much better to keep the history clean immediately with <code class="highlighter-rouge">git commit --fixup 21a93f4</code> followed by <code class="highlighter-rouge">git rebase -i --autosquash master</code>. That way, the change will be joined to your “Fix style” commit, as if it was always there. If you already pushed before that, you will need to use <code class="highlighter-rouge">git commit --force</code> or its safer counterpart <code class="highlighter-rouge">--force-with-lease</code></p>
+
+<h3 id="rules">Rules</h3>
+<ul>
+  <li>As long as the Pull Request doesn’t exist, freely rewrite the history to keep it as useful as possible.</li>
+</ul>
+
+<h3 id="caveats">Caveats</h3>
+<ul>
+  <li>In some cases, especially when many unrelated changes occurred to the same line of code, squashing the fixup could lead to time consuming and error prone conflicts. When that happens, it’s sometimes better to sacrifice the history and just make it a separate commit.</li>
+</ul>
+
+
+    <a href="/making-the-change.html" class="prev">Back</a>
+        <a href="/code-review-and-addressing-comments.html" class="next">Next</a>
+        </body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Summary and FAQ - Contribution guide</title>
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Summary and FAQ</h2>
+    <p>Thanks to following the flow, the git history looks like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b363e19 Add support for custom greeting; ref GRTR-5224
+b2e301c Fix style; ref GRTR-5224
+</code></pre></div></div>
+
+<p>Instead of that:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bf1cd4e Make the custom greeting backward compatible; ref GRTR-5224
+3b6271c Freeze string literals; ref GRTR-5224
+b363e19 Add support for custom greeting; ref GRTR-5224
+b2e301c Fix style; ref GRTR-5224
+</code></pre></div></div>
+
+<h3 id="faq">FAQ</h3>
+
+<h4 id="q-why-not-just-squash-all-the-commits-into-one-when-merging">Q: Why not just squash all the commits into one when merging?</h4>
+<p>A: Git history is a powerful tool which helps understanding past changes, including the author’s reasoning and scope of change. Mixing preparatory changes like style fixing, adding missing test coverage and performing initial refactor makes it much harder to use.</p>
+
+<h4 id="q-what-if-i-need-to-revert-a-feature">Q: What if I need to revert a feature?</h4>
+<p>A: Thanks to rebase strategy, all the new commits are next to each other in git history, which allows to revert range of commits using <code class="highlighter-rouge">git revert OLDER_COMMIT^..NEWER_COMMIT</code></p>
+
+<h4 id="q-is-it-really-worth-the-effort">Q: Is it really worth the effort?</h4>
+<p>A: For me it is, the flow may feel a bit complex at the beginning, but it gets natural with time. The most difficult bit is squashing conflicts, sometimes it is better to just be pragmatic and add a new commit on top.</p>
+
+
+    <a href="/second-review-and-merging.html" class="prev">Back</a>
+        <span class="next disabled">Next</span>
+        </body>
+</html>

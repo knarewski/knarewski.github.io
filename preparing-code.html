@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Preparing code for a change - Contribution guide</title>
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Preparing code for a change</h2>
+    <p>Because the pre-existing code doesn’t adhere to the company style guide, you create a first commit solely to fix violations and make it more readable.</p>
+
+<p>Diff:</p>
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/greeting.rb b/greeting.rb
+index 5836671..f89f50c 100644
+</span><span class="gd">--- a/greeting.rb
+</span><span class="gi">+++ b/greeting.rb
+</span><span class="p">@@ -1,6 +1,5 @@</span>
+ class Greeting
+<span class="gd">-  def print()
+-
+-    puts "Hello!"
+</span><span class="gi">+  def print
++    puts 'Hello!'
+</span>   end
+ end
+</code></pre></div></div>
+
+<p>New code:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Greeting</span>
+  <span class="k">def</span> <span class="nf">print</span>
+    <span class="nb">puts</span> <span class="s1">'Hello!'</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>The commit message can be <code class="highlighter-rouge">Fix style; ref GRTR-5224</code></p>
+
+<h3 id="rules">Rules</h3>
+<ul>
+  <li>Commit the preparatory work separately, because that will make it easier to review the actual change. It’s even more important when moving code between files. When reviewing such change, it is good to be able to trust that this 200+ lines change didn’t introduce any new logic and doesn’t have to be reviewed.</li>
+  <li>Add the ticket reference to commit message; that gives a clear indication what triggered the particular change (even if it’s not related directly to the ticket requirement); this can be easily automated when following the convention of including ticket ids in branch name.</li>
+</ul>
+
+
+    <a href="/starting-point.html" class="prev">Back</a>
+        <a href="/making-the-change.html" class="next">Next</a>
+        </body>
+</html>
